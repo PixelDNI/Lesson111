@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #students{
+            background-color: aqua;
+            width: 100px;
+            height: 200px;
+            margin: 10px auto;
+            padding: 50px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    {% for student in students %}
+        <div id="students">
+            <p>{{student.name}}</p>
+            <p>{{student.surname}}</p>
+            <p>{{student.age}}</p>
+            {% for instrument in student.instrument.all %}
+                    {{ instrument.name }}
+                {% endfor %}
+            <p>{{student.performance}}</p>
+            <p>{{student.has_paid}}</p>
+         <a href="{% url 'personal_data' pk=student.pk %}"><button>Change</button></a>
+        </div>
+    {%endfor%}
+</body>
+</html>

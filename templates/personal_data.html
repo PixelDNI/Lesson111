@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    #hello{
+      width: 200px;
+      height: 300px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+    <form method="post" name = 'PersonalData'>
+        {% csrf_token %}
+        <input type="text" name="name" value="{{ student.name }}">
+        <input type="text" name="surname" value="{{ student.surname }}">
+        <input type="text" name="age" value="{{ student.age }}">
+        <input type="text" name="course" value="{{ student.course }}">
+        <select name="instrument"  multiple>
+            {% for item in instruments %}
+                <option value="{{item.name}}">{{item.name}}</option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="performance" value="{{ student.performance }}">
+        <input type="text" name="has_paid" value="{% if student.has_paid %}Yes{% else %}No{% endif %}">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
